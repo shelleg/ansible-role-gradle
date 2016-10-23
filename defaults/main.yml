@@ -1,0 +1,12 @@
+---
+# defaults file for ansible-role-gradle
+
+gradle_version_major: "3"
+gradle_version_minor: "1"
+
+gradle_version: "{{ gradle_version_major }}.{{ gradle_version_minor}}"
+gradle_binary: "gradle-{{ gradle_version }}-all.zip"
+gradle_download_url: "https://services.gradle.org/distributions/{{ gradle_binary }}"
+gradle_base_dir: /usr/local/share/
+gradle_extract_dir:  "gradle-{{ gradle_version }}"
+gradle_link: /usr/local/bin/gradle
