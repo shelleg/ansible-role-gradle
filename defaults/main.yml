@@ -2,7 +2,7 @@
 # defaults file for ansible-role-gradle
 
 gradle_version_major: "3"
-gradle_version_minor: "1"
+gradle_version_minor: "3"
 
 gradle_version: "{{ gradle_version_major }}.{{ gradle_version_minor}}"
 gradle_binary: "gradle-{{ gradle_version }}-all.zip"

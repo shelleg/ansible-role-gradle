@@ -1,21 +1,23 @@
 ---
 # tasks file for ansible-role-gradle
 
+- name: "Check gradle version is present"
+  shell: "gradle -v | grep {{ gradle_version }}"
+  ignore_errors: True
+  register: gradle_version_check
+
 - block:
-  - shell: "gradle -v | grep {{ gradle_version }}"
-  - debug: msg=" Gradle {{ gradle_version }} is installed"
 
-  rescue:
   - name: "Install unzip"
-    apt: name=unzip state=latest
+    package:
+      name: unzip
+      state: latest
 
-  - name: "Download Gradle {{ gradle_version }}"
-    get_url:
-      dest: /tmp
-      url: "{{ gradle_download_url }}"
-
-  - name: "Extract Gradle"
-    shell: "unzip /tmp/{{ gradle_binary }} -d {{ gradle_base_dir }}"
+  - name: "Download & Extract Gradle {{ gradle_version }}"
+    unarchive:
+      src: "{{ gradle_download_url }}"
+      dest: "{{ gradle_base_dir }}"
+      remote_src: True
 
   - name: "Add gradle symlink to path"
     file:
@@ -33,6 +35,13 @@
       msg: "Seems to be gradle {{ gradle_version }} is missing ... aborting"
     when: gradle_ver.rc != 0
 
+  when: gradle_version_check.rc != 0
 
+- name: "Validate Gradle version"
+  shell: "gradle -v | grep {{ gradle_version }}"
+  register: gradle_ver
+
+- debug: msg=" Gradle {{ gradle_version }} is installed"
+  when: gradle_ver.rc == 0
 
 
