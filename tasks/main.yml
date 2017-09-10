@@ -2,7 +2,7 @@
 # tasks file for ansible-role-gradle
 
 - name: "Check gradle version is present"
-  shell: "gradle -v | grep {{ gradle_version }}"
+  shell: "{{ gradle_link }} -v | grep {{ gradle_version }}"
   ignore_errors: True
   register: gradle_version_check
 
@@ -28,7 +28,7 @@
       state: link
 
   - name: "Validate Gradle version"
-    shell: "gradle -v | grep {{ gradle_version }}"
+    shell: "{{ gradle_link }} -v | grep {{ gradle_version }}"
     register: gradle_ver
 
   - fail:
@@ -38,10 +38,9 @@
   when: gradle_version_check.rc != 0
 
 - name: "Validate Gradle version"
-  shell: "gradle -v | grep {{ gradle_version }}"
+  shell: "{{ gradle_link }} -v | grep {{ gradle_version }}"
   register: gradle_ver
 
-- debug: msg=" Gradle {{ gradle_version }} is installed"
+- debug:
+    msg: "Gradle {{ gradle_version }} is installed"
   when: gradle_ver.rc == 0
-
-
