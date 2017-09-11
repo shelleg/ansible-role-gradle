@@ -4,6 +4,7 @@
 - name: "Check gradle version is present"
   shell: "{{ gradle_link }} -v | grep {{ gradle_version }}"
   ignore_errors: True
+  changed_when: False
   register: gradle_version_check
 
 - block:
@@ -39,6 +40,7 @@
 
 - name: "Validate Gradle version"
   shell: "{{ gradle_link }} -v | grep {{ gradle_version }}"
+  changed_when: False
   register: gradle_ver
 
 - debug:
