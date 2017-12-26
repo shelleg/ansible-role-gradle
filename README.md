@@ -8,6 +8,13 @@ Get from Ansible galaxy like so:
 ansible-galaxy install shelleg.gradle
 ```
 
+Please test the role before creating a Pull Request by issuing:
+
+```
+chmod +x ./tests/geerlingguy.test/ansible-role-test.sh
+cleanup=false container_id=$(date +%s) distro=centos7 ./tests/geerlingguy.test/ansible-role-test.sh
+```
+
 Build Status:
 -------------
 Currently only supports Ansible lint, need to add distributions (work started in `.travis.yml`)

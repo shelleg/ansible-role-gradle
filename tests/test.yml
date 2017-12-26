@@ -2,4 +2,5 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - ansible-role-gradle
+    - ansiblebit.oracle-java
+    - role_under_test
