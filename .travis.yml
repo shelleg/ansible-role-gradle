@@ -6,6 +6,7 @@ env:
   - distro: ubuntu1604
 
 script:
+  - chmod +x ./tests/geerlingguy.test/ansible-role-test.sh
   - ./tests/geerlingguy.test/ansible-role-test.sh
 
 notifications:
