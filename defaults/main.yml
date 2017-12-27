@@ -6,6 +6,8 @@ gradle_version_minor: "3"
 
 gradle_version: "{{ gradle_version_major }}.{{ gradle_version_minor}}"
 gradle_binary: "gradle-{{ gradle_version }}-all.zip"
+gradle_checksum: sha256:71a787faed83c4ef21e8464cc8452b941b5fcd575043aa29d39d15d879be89f7
+gradle_download: /tmp/{{ gradle_binary }}
 gradle_download_url: "https://services.gradle.org/distributions/{{ gradle_binary }}"
 gradle_base_dir: /usr/local/share/
 gradle_extract_dir:  "gradle-{{ gradle_version }}"
