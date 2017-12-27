@@ -1,6 +1,9 @@
 ---
 - hosts: localhost
   remote_user: root
+  vars:
+    gradle_version: 3.5
+    gradle_checksum: sha256:d84bf6b6113da081d0082bcb63bd8547824c6967fe68704d1e3a6fde822b7212
   roles:
     - ansiblebit.oracle-java
     - role_under_test

@@ -32,9 +32,8 @@ Role Variables
 
 Version related:
 
-* `gradle_version_major: "3"`
-* `gradle_version_minor: "1"`
-* `gradle_version: "{{ gradle_version_major }}.{{ gradle_version_minor}}"`
+* `gradle_version: 4.4.1`
+* `gradle_checksum: sha256:dd9b24950dc4fca7d1ca5f1ccd57ca8c5b9eb407e3e6e0f48174fde4bb19ed06`
 
 Defaults:
  
