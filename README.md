@@ -19,9 +19,9 @@ Build Status:
 -------------
 Currently only supports Ansible lint, need to add distributions (work started in `.travis.yml`)
 
-[![Build Status](https://travis-ci.org/shelleg/ansible-role-activemq.svg?branch=master)](https://travis-ci.org/shelleg/ansible-role-activemq)
+[![Build Status](https://travis-ci.org/shelleg/ansible-role-gradle.svg?branch=master)](https://travis-ci.org/shelleg/ansible-role-gradle)
 
-[![Code Climate](https://codeclimate.com/github/shelleg/ansible-role-activemq/badges/gpa.svg)](https://codeclimate.com/github/shelleg/ansible-role-activemq) [![Issue Count](https://codeclimate.com/github/shelleg/ansible-role-activemq/badges/issue_count.svg)](https://codeclimate.com/github/shelleg/ansible-role-activemq) [![Test Coverage](https://codeclimate.com/github/shelleg/ansible-role-activemq/badges/coverage.svg)](https://codeclimate.com/github/shelleg/ansible-role-activemq/coverage) 
+[![Code Climate](https://codeclimate.com/github/shelleg/ansible-role-gradle/badges/gpa.svg)](https://codeclimate.com/github/shelleg/ansible-role-gradle) [![Issue Count](https://codeclimate.com/github/shelleg/ansible-role-gradle/badges/issue_count.svg)](https://codeclimate.com/github/shelleg/ansible-role-gradle) [![Test Coverage](https://codeclimate.com/github/shelleg/ansible-role-gradle/badges/coverage.svg)](https://codeclimate.com/github/shelleg/ansible-role-gradle/coverage)
 
 Requirements
 ------------
