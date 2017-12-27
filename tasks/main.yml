@@ -14,9 +14,15 @@
       name: unzip
       state: latest
 
+  - name: Download.
+    get_url:
+      url: "{{ gradle_download_url }}"
+      dest: "{{ gradle_download }}"
+      checksum: "{{ gradle_checksum }}"
+
   - name: "Download & Extract Gradle {{ gradle_version }}"
     unarchive:
-      src: "{{ gradle_download_url }}"
+      src: "{{ gradle_download }}"
       dest: "{{ gradle_base_dir }}"
       remote_src: True
 
