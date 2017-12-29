@@ -2,10 +2,15 @@
 # tasks file for ansible-role-gradle
 
 - name: "Check gradle version is present"
+  stat:
+    path: "{{ gradle_link }}"
+  register: gradle_present
+
+- name: "Check gradle version is present"
   shell: "{{ gradle_link }} -v | grep {{ gradle_version }}"
-  ignore_errors: True
-  changed_when: False
+  changed_when: false
   register: gradle_version_check
+  when: gradle_present.stat.exists
 
 - block:
 
@@ -14,13 +19,13 @@
       name: unzip
       state: latest
 
-  - name: Download.
+  - name: "Download"
     get_url:
       url: "{{ gradle_download_url }}"
       dest: "{{ gradle_download }}"
       checksum: "{{ gradle_checksum }}"
 
-  - name: "Download & Extract Gradle {{ gradle_version }}"
+  - name: "Extract Gradle {{ gradle_version }}"
     unarchive:
       src: "{{ gradle_download }}"
       dest: "{{ gradle_base_dir }}"
@@ -42,7 +47,7 @@
       msg: "Seems to be gradle {{ gradle_version }} is missing ... aborting"
     when: gradle_ver.rc != 0
 
-  when: gradle_version_check.rc != 0
+  when: not gradle_present.stat.exists
 
 - name: "Validate Gradle version"
   shell: "{{ gradle_link }} -v | grep {{ gradle_version }}"
